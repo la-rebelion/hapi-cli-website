@@ -6,8 +6,12 @@ import { WhyHapi } from "@/components/sections/WhyHapi";
 import { Pricing } from "@/components/sections/Pricing";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
+import { ExitIntentModal } from "@/components/ExitIntentModal";
+import { useExitIntent } from "@/hooks/useExitIntent";
 
 const Index = () => {
+  const { showExitIntent, closeExitIntent } = useExitIntent();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -26,6 +30,7 @@ const Index = () => {
       </div>
       <CTA />
       <Footer />
+      <ExitIntentModal open={showExitIntent} onClose={closeExitIntent} />
     </div>
   );
 };
