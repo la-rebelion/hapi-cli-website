@@ -9,6 +9,7 @@ export const Header = () => {
     { name: "How it Works", href: "#how-it-works" },
     { name: "Examples", href: "#examples" },
     { name: "Why HAPI", href: "#why-hapi" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Docs", href: "https://docs.mcp.com.ai", external: true }
   ];
 

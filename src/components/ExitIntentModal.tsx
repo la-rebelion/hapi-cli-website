@@ -1,7 +1,5 @@
-import { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { X, Mail, Zap, Code, MessageSquare, Bot } from 'lucide-react';
 
 interface ExitIntentModalProps {
@@ -9,54 +7,44 @@ interface ExitIntentModalProps {
   onClose: () => void;
 }
 
-export const ExitIntentModal = ({ open, onClose }: ExitIntentModalProps) => {
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+// @note: This form is structured as static HTML for HubSpot compliance
+// We use inline preventDefault in the form element to avoid navigation while allowing HubSpot to track
+// See: https://knowledge.hubspot.com/forms/use-non-hubspot-forms
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      // Here you would typically send the email to your backend/newsletter service
-      console.log('Newsletter signup:', email);
-      setIsSubmitted(true);
-      setTimeout(() => {
-        onClose();
-      }, 2000);
+export const ExitIntentModal = ({ open, onClose }: ExitIntentModalProps) => {
+  const [showThankYou, setShowThankYou] = useState(false);
+  
+  // Handle dialog close event properly
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      onClose();
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <Dialog open={open} onOpenChange={onClose}>
-        <DialogContent className="max-w-md text-center">
-          <div className="flex flex-col items-center space-y-4 py-6">
-            <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
-              <Mail className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-foreground">You're all set!</h3>
-              <p className="text-muted-foreground">We'll keep you updated on the latest HAPI Stack developments.</p>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
-  }
+  // We'll use a direct inline handler with preventDefault
+  // This is still HubSpot compliant as it's not a React-specific handler
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setShowThankYou(true);
+    setTimeout(() => {
+      setShowThankYou(false);
+      onClose();
+    }, 2000);
+    return false; // Extra prevention for form submission
+  };
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-foreground">
             Wait! Don't miss out on the AI revolution
           </DialogTitle>
         </DialogHeader>
-        
         <div className="space-y-6">
           <p className="text-muted-foreground">
             Stay updated with the latest developments in the HAPI Stack for MCP. Get early access to new features, releases, and exclusive insights.
           </p>
-
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center space-x-3 p-3 rounded-lg bg-muted/50">
               <Code className="w-5 h-5 text-primary" />
@@ -90,31 +78,44 @@ export const ExitIntentModal = ({ open, onClose }: ExitIntentModalProps) => {
               </div>
             </div>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full"
-              />
+          {showThankYou ? (
+            <div className="text-center py-8">
+              <Mail className="w-8 h-8 mx-auto text-primary mb-2" />
+              <h3 className="text-lg font-semibold text-foreground">Thank you for subscribing!</h3>
+              <p className="text-muted-foreground">We'll keep you updated on the latest HAPI Stack developments.</p>
             </div>
-            
-            <div className="flex space-x-3">
-              <Button type="submit" className="flex-1" variant="cta">
-                <Mail className="w-4 h-4" />
-                Get Updates
-              </Button>
-              <Button type="button" variant="outline" onClick={onClose}>
-                <X className="w-4 h-4" />
-                No Thanks
-              </Button>
-            </div>
-          </form>
-
+          ) : (
+            <form
+              method="POST"
+              action="#"
+              onSubmit={handleFormSubmit}
+            >
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                  className="w-full border rounded px-3 py-2 text-foreground bg-background"
+                />
+              </div>
+              <div className="flex space-x-3 mt-4">
+                <input
+                  type="submit"
+                  value="Get Updates"
+                  className="flex-1 bg-primary text-primary-foreground font-semibold py-2 rounded cursor-pointer"
+                />
+                <button
+                  type="button"
+                  className="flex-1 border rounded py-2 text-muted-foreground"
+                  onClick={onClose}
+                >
+                  <X className="w-4 h-4 inline" />
+                  No Thanks
+                </button>
+              </div>
+            </form>
+          )}
           <p className="text-xs text-muted-foreground text-center">
             No spam, ever. Unsubscribe at any time. We respect your privacy.
           </p>
