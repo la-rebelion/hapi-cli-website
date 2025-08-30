@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -42,6 +42,9 @@ export const BetaKeyModal = ({ open, onClose }: BetaKeyModalProps) => {
             <Key className="w-5 h-5 text-primary" />
             Get Your Beta Key
           </DialogTitle>
+          <DialogDescription>
+            Get exclusive early access to the HAPI Stack beta
+          </DialogDescription>
         </DialogHeader>
         
         {showConfirmation ? (

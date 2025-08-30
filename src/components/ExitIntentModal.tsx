@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { X, Mail, Zap, Code, MessageSquare, Bot } from 'lucide-react';
 
 interface ExitIntentModalProps {
@@ -40,6 +40,9 @@ export const ExitIntentModal = ({ open, onClose }: ExitIntentModalProps) => {
           <DialogTitle className="text-xl font-bold text-foreground">
             Wait! Don't miss out on the AI revolution
           </DialogTitle>
+          <DialogDescription>
+            Stay updated with the latest HAPI Stack developments and get exclusive insights
+          </DialogDescription>
         </DialogHeader>
         <div className="space-y-6">
           <p className="text-muted-foreground">

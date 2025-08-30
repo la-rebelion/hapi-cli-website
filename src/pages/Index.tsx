@@ -10,6 +10,7 @@ import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { useExitIntent } from "@/hooks/useExitIntent";
 
 const Index = () => {
+  console.log('Index page rendering...');
   const { showExitIntent, closeExitIntent } = useExitIntent();
 
   return (
