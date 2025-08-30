@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Github, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { DemoRequestModal } from "@/components/DemoRequestModal";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const navigation = [
     { name: "How it Works", href: "#how-it-works" },
@@ -49,6 +51,13 @@ export const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => setIsDemoModalOpen(true)}
+            >
+              Request a Demo
+            </Button>
             <Button variant="ghost" size="sm">
               <Github className="w-4 h-4" />
               GitHub
@@ -86,6 +95,17 @@ export const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="justify-start"
+                  onClick={() => {
+                    setIsDemoModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Request a Demo
+                </Button>
                 <Button variant="ghost" size="sm" className="justify-start">
                   <Github className="w-4 h-4" />
                   GitHub
@@ -98,6 +118,10 @@ export const Header = () => {
           </div>
         )}
       </div>
+      <DemoRequestModal 
+        open={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)} 
+      />
     </header>
   );
 };
