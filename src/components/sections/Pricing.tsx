@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { BetaKeyModal } from "@/components/BetaKeyModal";
 
 export const Pricing = () => {
+  const [showBetaModal, setShowBetaModal] = useState(false);
   const features = [
     "Up to 100 endpoints",
     "100 requests/day",
@@ -67,7 +70,7 @@ export const Pricing = () => {
                 size="lg" 
                 variant="cta" 
                 className="w-full"
-                onClick={() => window.open('https://github.com/la-rebelion/hapimcp/releases', '_blank')}
+                onClick={() => setShowBetaModal(true)}
               >
                 Get Your Beta Key
               </Button>
@@ -79,6 +82,10 @@ export const Pricing = () => {
           </Card>
         </div>
       </div>
+      <BetaKeyModal 
+        open={showBetaModal} 
+        onClose={() => setShowBetaModal(false)} 
+      />
     </section>
   );
 };
