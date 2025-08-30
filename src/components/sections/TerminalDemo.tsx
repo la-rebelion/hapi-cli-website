@@ -8,23 +8,23 @@ export const TerminalDemo = () => {
   const steps = [
     {
       title: "Developer View",
-      command: "hapi run swagger.json --test",
-      description: "Test endpoints instantly without Postman",
+      command: "hapi run petstore --headless",
+      description: "Test endpoints instantly with any MCP Client",
       output: [
         "🚀 HAPI CLI v2.1.0",
-        "📄 Loading swagger.json...",
+        "📄 Loading petstore...",
         "✅ Found 8 endpoints",
         "🔧 Generating test suite...",
-        "✨ Ready! API testing server running on :8080"
+        "✨ Ready! HAPI MCP server running on :3000"
       ]
     },
     {
       title: "AI Integration",
-      command: "hapi run openapi.yaml --mcp",
+      command: "hapi run my-api --mcp",
       description: "Wrap API as MCP server for AI agents",
       output: [
         "🚀 HAPI CLI v2.1.0",
-        "📄 Loading openapi.yaml...",
+        "📄 Loading my-api...",
         "🤖 Creating MCP server...",
         "🔗 Exposing 12 tools to AI agents",
         "✨ MCP server running on :3000"

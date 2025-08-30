@@ -25,7 +25,9 @@ export const Header = () => {
               HAPI CLI
             </div>
             <div className="hidden sm:flex items-center gap-1 px-2 py-1 rounded bg-primary/10 text-xs text-primary font-medium">
-              <span>v2.1.0</span>
+              <a href="https://github.com/la-rebelion/hapimcp/releases" target="_blank" rel="noopener noreferrer">
+                <span>Releases</span>
+              </a>
             </div>
           </div>
 

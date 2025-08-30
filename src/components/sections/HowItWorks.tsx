@@ -7,19 +7,19 @@ export const HowItWorks = () => {
       icon: FileText,
       title: "Pick your API spec",
       description: "OpenAPI, Swagger, REST - HAPI CLI works with any API specification format.",
-      details: ["OpenAPI 3.0+", "Swagger 2.0", "REST APIs", "GraphQL schemas"]
+      details: ["OpenAPI 3.0+", "REST APIs", "OAuth 2.0 Dynamic Client Registration"]
     },
     {
       icon: Terminal,
       title: "Run a single command",
-      description: "One simple CLI command transforms your API into a usable tool or service.",
+      description: "One simple CLI command transforms your API into a usable MCP Server.",
       details: ["No complex setup", "Zero configuration", "Works anywhere", "Cross-platform"]
     },
     {
       icon: Zap,
       title: "Use instantly",
       description: "Your API is now ready as a tool, AI agent, or testing interface.",
-      details: ["MCP server ready", "AI agent compatible", "Testing interface", "Team-friendly UI"]
+      details: ["MCP server ready", "AI agent compatible", "Testing interface", "Developer Experience friendly"]
     }
   ];
 

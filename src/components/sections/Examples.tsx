@@ -9,30 +9,30 @@ export const Examples = () => {
 
   const developerExamples = [
     {
-      title: "API Testing Made Simple",
-      description: "Instantly test endpoints without Postman or boilerplate code",
-      command: "hapi run swagger.json --test",
+      title: "MCP Testing Made Simple",
+      description: "Instantly test API endpoints as MCP tools without boilerplate code",
+      command: "hapi run petstore --headless",
       output: [
         "🚀 HAPI CLI v2.1.0",
-        "📄 Loading swagger.json...",
+        "📄 Loading petstore...",
         "✅ Found 8 endpoints",
         "🔧 Generating test suite...",
-        "✨ Ready! API testing server running on :8080",
+        "✨ Ready! HAPI MCP server running on :3000",
         "",
         "Available endpoints:",
-        "  GET  /api/users",
-        "  POST /api/users",
-        "  GET  /api/users/:id"
+        "  GET  /pet/findByStatus",
+        "  POST /pet",
+        "  GET  /pet/:id"
       ],
-      benefits: ["Zero setup time", "Automatic endpoint discovery", "Interactive testing UI"]
+      benefits: ["Zero setup time", "Automatic endpoint discovery", "Interactive testing tools UI", "Ideal for brownfield projects integrating with MCP"]
     },
     {
       title: "AI Integration",
-      description: "Instantly wrap API as an MCP server, usable by AI agents",
-      command: "hapi run openapi.yaml --mcp",
+      description: "Instantly create APIs as an MCP server, usable by AI agents",
+      command: "hapi run my-microservices --mcp",
       output: [
         "🚀 HAPI CLI v2.1.0",
-        "📄 Loading openapi.yaml...",
+        "📄 Loading my-microservices...",
         "🤖 Creating MCP server...",
         "🔗 Exposing 12 tools to AI agents",
         "✨ MCP server running on :3000",
@@ -40,9 +40,14 @@ export const Examples = () => {
         "Available MCP tools:",
         "  - get_user_profile",
         "  - create_user", 
-        "  - update_user_settings"
+        "  - update_user_settings",
+        "",
+        "Available endpoints:",
+        "  GET  /pet/findByStatus",
+        "  POST /pet",
+        "  GET  /pet/:id"
       ],
-      benefits: ["AI-ready instantly", "Claude/ChatGPT compatible", "Zero configuration"]
+      benefits: ["AI-ready instantly", "MCP Clients compatible", "Zero configuration", "Ideal for greenfield projects from the ground up"]
     }
   ];
 
@@ -195,7 +200,7 @@ export const Examples = () => {
                           </div>
                         ))}
                       </div>
-                      <Button variant="secondary" className="w-full mt-4">
+                      <Button variant="secondary" className="w-full mt-4" onClick={() => window.location.href = 'https://run.mcp.com.ai'}>
                         <ExternalLink className="w-4 h-4" />
                         Try runMCP Interface
                       </Button>
@@ -217,7 +222,7 @@ export const Examples = () => {
                 </div>
                 <div>
                   <blockquote className="text-lg font-medium mb-2">
-                    "I replaced 3 tools with one CLI command. Magic."
+                    "I replaced 200+ tools with one CLI command. Magic."
                   </blockquote>
                   <cite className="text-sm text-muted-foreground">
                     Senior Developer at TechCorp
@@ -238,7 +243,7 @@ export const Examples = () => {
                     "I can finally test APIs without waiting for engineering."
                   </blockquote>
                   <cite className="text-sm text-muted-foreground">
-                    Product Manager at StartupXYZ
+                    CEO at StartupXYZ
                   </cite>
                 </div>
               </div>

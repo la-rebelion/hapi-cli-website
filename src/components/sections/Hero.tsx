@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Terminal, Download, Play, ArrowRight } from "lucide-react";
+import { Terminal, Download, Play, Copy } from "lucide-react";
 import { TerminalDemo } from "./TerminalDemo";
+import { useState } from "react";
 
 export const Hero = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("curl -fsSL https://get.mcp.com.ai/install | bash");
+    setCopied(true);
+    alert("Command copied");
+    setTimeout(() => setCopied(false), 500);
+  };
   return (
     <section className="relative min-h-screen bg-gradient-hero flex items-center justify-center overflow-hidden">
       {/* Background grid pattern */}
@@ -20,7 +29,7 @@ export const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Turn APIs into{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              tools
+              MCP tools
             </span>{" "}
             in seconds
           </h1>
@@ -33,11 +42,11 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button variant="cta" size="xl" className="min-w-[200px]">
+            <Button variant="cta" size="xl" className="min-w-[200px]" onClick={() => window.location.href = 'https://github.com/la-rebelion/hapimcp/releases'}>
               <Download className="w-5 h-5" />
               Download HAPI CLI
             </Button>
-            <Button variant="outline" size="xl" className="min-w-[200px]">
+            <Button variant="outline" size="xl" className="min-w-[200px]" onClick={() => window.location.href = 'https://youtu.be/kl5c67hvNW0?si=36kJriAtLcBseZtO'}>
               <Play className="w-5 h-5" />
               See it in Action
             </Button>
@@ -48,8 +57,9 @@ export const Hero = () => {
             <p className="text-sm text-muted-foreground mb-3">Quick install:</p>
             <div className="inline-flex items-center gap-3 px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-lg">
               <code className="font-mono text-primary">curl -fsSL https://get.mcp.com.ai/install | bash</code>
-              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                <ArrowRight className="w-4 h-4" />
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0"
+                      onClick={handleCopy}>
+                <Copy className="w-4 h-4" />
               </Button>
             </div>
           </div>

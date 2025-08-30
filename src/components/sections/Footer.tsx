@@ -15,9 +15,10 @@ export const Footer = () => {
       { name: "API Reference", href: "https://docs.mcp.com.ai/api" }
     ],
     community: [
-      { name: "Discord", href: "#" },
-      { name: "Twitter", href: "#" },
-      { name: "Blog", href: "#" },
+      { name: "Discord", href: "https://discord.com" },
+      { name: "Twitter", href: "https://x.com/LaRebelionLabs" },
+      { name: "YouTube", href: "https://youtube.com/@LaRebelion" },
+      { name: "Blog", href: "https://rebelion.la" },
       { name: "Changelog", href: "#" }
     ]
   };
@@ -40,7 +41,7 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-3">
               <a 
-                href="https://github.com/la-rebelion/hapimcp" 
+                href="https://github.com/orgs/la-rebelion/repositories?q=mcp&sort=updated&direction=desc" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -111,7 +112,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2024 HAPI CLI. Open source, built for the AI-first future.
+            © 2024 HAPI CLI. Built for the AI-first future by <a href="https://rebelion.la" className="hover:text-foreground transition-colors">La Rebelion Labs</a>.
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
