@@ -141,7 +141,7 @@ export const Examples = () => {
                           </div>
                         ))}
                       </div>
-                      <Button variant="outline" className="w-full mt-4">
+                      <Button variant="outline" className="w-full mt-4" onClick={() => window.location.href = 'https://docs.mcp.com.ai/components/hapi-server/hapi-cli'}>
                         <ExternalLink className="w-4 h-4" />
                         View Full Documentation
                       </Button>
