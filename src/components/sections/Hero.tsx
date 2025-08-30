@@ -1,15 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Terminal, Download, Play, Copy } from "lucide-react";
+import { Terminal, Download, Play, Copy, Check } from "lucide-react";
 import { TerminalDemo } from "./TerminalDemo";
 import { useState } from "react";
 
 export const Hero = () => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("curl -fsSL https://get.mcp.com.ai/install | bash");
+  const handleCopy = (platform: 'linux' | 'windows') => () => {
+    const command = platform === 'linux'
+      ? "curl -fsSL https://get.mcp.com.ai/hapi.sh | bash"
+      : "irm https://get.mcp.com.ai/hapi.ps1 | iex";
+    navigator.clipboard.writeText(command);
     setCopied(true);
-    alert("Command copied");
     setTimeout(() => setCopied(false), 500);
   };
   return (
@@ -56,10 +58,26 @@ export const Hero = () => {
           <div className="pt-8">
             <p className="text-sm text-muted-foreground mb-3">Quick install:</p>
             <div className="inline-flex items-center gap-3 px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-lg">
-              <code className="font-mono text-primary">curl -fsSL https://get.mcp.com.ai/install | bash</code>
+              <code className="font-mono text-primary">curl -fsSL https://get.mcp.com.ai/hapi.sh | bash</code>
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0"
-                      onClick={handleCopy}>
-                <Copy className="w-4 h-4" />
+                      onClick={handleCopy('linux')}>
+                      {copied ? (
+                        <Check className="w-4 h-4 text-primary" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground mb-3 pt-4">Windows install:</p>
+            <div className="inline-flex items-center gap-3 px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-lg">
+              <code className="font-mono text-primary">irm https://get.mcp.com.ai/hapi.ps1 | iex</code>
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0"
+                      onClick={handleCopy('windows')}>
+                      {copied ? (
+                        <Check className="w-4 h-4 text-primary" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
               </Button>
             </div>
           </div>

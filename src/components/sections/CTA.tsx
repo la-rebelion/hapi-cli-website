@@ -6,8 +6,11 @@ import { useState } from "react";
 export const CTA = () => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("curl -fsSL https://get.mcp.com.ai/install | bash");
+  const handleCopy = (platform: 'linux' | 'windows') => () => {
+    const command = platform === 'linux'
+      ? "curl -fsSL https://get.mcp.com.ai/hapi.sh | bash"
+      : "irm https://get.mcp.com.ai/hapi.ps1 | iex";
+    navigator.clipboard.writeText(command);
     setCopied(true);
     setTimeout(() => setCopied(false), 500);
   };
@@ -46,7 +49,7 @@ export const CTA = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={handleCopy}
+                      onClick={handleCopy('linux')}
                       className="h-8 w-8 p-0"
                     >
                       {copied ? (
@@ -58,7 +61,31 @@ export const CTA = () => {
                   </div>
                   <div className="text-primary">
                     <span className="text-muted-foreground">$ </span>
-                    curl -fsSL https://get.mcp.com.ai/install | bash
+                    curl -fsSL https://get.mcp.com.ai/hapi.sh | bash
+                  </div>
+                </div>
+                <h3 className="mb-4">Windows Quick Install</h3>
+
+                {/* Command line */}
+                <div className="bg-background/50 border border-border rounded-lg p-6 font-mono text-left">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">Terminal</span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleCopy('windows')}
+                      className="h-8 w-8 p-0"
+                    >
+                      {copied ? (
+                        <Check className="w-4 h-4 text-primary" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                  <div className="text-primary">
+                    <span className="text-muted-foreground">$ </span>
+                    irm https://get.mcp.com.ai/hapi.ps1 | iex
                   </div>
                 </div>
 
