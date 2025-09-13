@@ -58,7 +58,11 @@ export const Header = () => {
             >
               Request a Demo
             </Button>
-            <Button variant="ghost" size="sm">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => window.open('https://github.com/la-rebelion/hapimcp/releases', '_blank')}
+            >
               <Github className="w-4 h-4" />
               GitHub
             </Button>
@@ -106,7 +110,12 @@ export const Header = () => {
                 >
                   Request a Demo
                 </Button>
-                <Button variant="ghost" size="sm" className="justify-start">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="justify-start"
+                  onClick={() => window.open('https://github.com/la-rebelion/hapimcp/releases', '_blank')}
+                >
                   <Github className="w-4 h-4" />
                   GitHub
                 </Button>
