@@ -115,9 +115,9 @@ export const Footer = () => {
             © 2024 HAPI CLI. Built for the AI-first future by <a href="https://rebelion.la" className="hover:text-foreground transition-colors">La Rebelion Labs</a>.
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">License</a>
+            <a href="https://mcp.com.ai/privacy" className="hover:text-foreground transition-colors">Privacy</a>
+            <a href="https://mcp.com.ai/terms" className="hover:text-foreground transition-colors">Terms</a>
+            <a href="https://mcp.com.ai/license" className="hover:text-foreground transition-colors">License</a>
           </div>
         </div>
       </div>
