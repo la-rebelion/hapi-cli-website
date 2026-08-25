@@ -8,7 +8,7 @@ export const TerminalDemo = () => {
   const steps = [
     {
       title: "Developer View",
-      command: "hapi run petstore --headless",
+      command: "hapi serve petstore --headless",
       description: "Test endpoints instantly with any MCP Client",
       output: [
         "🚀 HAPI CLI v2.1.0",
@@ -20,7 +20,7 @@ export const TerminalDemo = () => {
     },
     {
       title: "AI Integration",
-      command: "hapi run my-api --mcp",
+      command: "hapi serve my-api --mcp",
       description: "Wrap API as MCP server for AI agents",
       output: [
         "🚀 HAPI CLI v2.1.0",

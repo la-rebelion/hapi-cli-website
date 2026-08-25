@@ -6,20 +6,20 @@ export const HowItWorks = () => {
     {
       icon: FileText,
       title: "Pick your API spec",
-      description: "OpenAPI, Swagger, REST - HAPI CLI works with any API specification format.",
-      details: ["OpenAPI 3.0+", "REST APIs", "OAuth 2.0 Dynamic Client Registration"]
+      description: "OpenAPI, Swagger, and Arazzo workflow descriptions give HAPI CLI the context to build useful MCP tools.",
+      details: ["OpenAPI 3.0+", "Arazzo workflows", "REST APIs", "OAuth 2.0 Dynamic Client Registration"]
     },
     {
       icon: Terminal,
       title: "Run a single command",
-      description: "One simple CLI command transforms your API into a usable MCP Server.",
-      details: ["No complex setup", "Zero configuration", "Works anywhere", "Cross-platform"]
+      description: "One simple CLI command transforms your API and its workflows into a usable MCP server.",
+      details: ["HAPI Workflows", "No complex setup", "Zero configuration", "Works anywhere", "Cross-platform"]
     },
     {
       icon: Zap,
       title: "Use instantly",
-      description: "Your API is now ready as a tool, AI agent, or testing interface.",
-      details: ["MCP server ready", "AI agent compatible", "Testing interface", "Developer Experience friendly"]
+      description: "Your API and orchestrated workflows are ready as tools, AI agent capabilities, or testing interfaces.",
+      details: ["MCP server ready", "Workflow execution", "AI agent compatible", "Testing interface", "Developer Experience friendly"]
     }
   ];
 
@@ -93,7 +93,7 @@ export const HowItWorks = () => {
                   <FileText className="w-8 h-8 text-primary" />
                 </div>
                 <p className="text-sm font-medium">API Spec</p>
-                <p className="text-xs text-muted-foreground">swagger.json</p>
+                <p className="text-xs text-muted-foreground">openapi.yaml + arazzo.yaml</p>
               </div>
               
               <ArrowRight className="w-6 h-6 text-primary animate-pulse" />
@@ -103,7 +103,7 @@ export const HowItWorks = () => {
                   <Terminal className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <p className="text-sm font-medium">HAPI CLI</p>
-                <p className="text-xs text-muted-foreground">Magic happens</p>
+                <p className="text-xs text-muted-foreground">HAPI Workflows</p>
               </div>
               
               <ArrowRight className="w-6 h-6 text-primary animate-pulse" />

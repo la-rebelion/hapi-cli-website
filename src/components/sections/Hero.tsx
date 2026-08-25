@@ -8,8 +8,8 @@ export const Hero = () => {
 
   const handleCopy = (platform: 'linux' | 'windows') => () => {
     const command = platform === 'linux'
-      ? "curl -fsSL https://get.mcp.com.ai/hapi.sh | bash"
-      : "irm https://get.mcp.com.ai/hapi.ps1 | iex";
+      ? "curl -fsSL https://get.mcp.com.ai/hapi.sh | bash -s -- --version v1"
+      : "$s = irm https://get.mcp.com.ai/hapi.ps1; & ([scriptblock]::Create($s)) --version v1";
     navigator.clipboard.writeText(command);
     setCopied(true);
     setTimeout(() => setCopied(false), 500);
@@ -58,7 +58,7 @@ export const Hero = () => {
           <div className="pt-8">
             <p className="text-sm text-muted-foreground mb-3">Quick install:</p>
             <div className="inline-flex items-center gap-3 px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-lg">
-              <code className="font-mono text-primary">curl -fsSL https://get.mcp.com.ai/hapi.sh | bash</code>
+              <code className="font-mono text-primary">curl -fsSL https://get.mcp.com.ai/hapi.sh | bash -s -- --version v1</code>
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0"
                       onClick={handleCopy('linux')}>
                       {copied ? (
@@ -70,7 +70,7 @@ export const Hero = () => {
             </div>
             <p className="text-sm text-muted-foreground mb-3 pt-4">Windows install:</p>
             <div className="inline-flex items-center gap-3 px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-lg">
-              <code className="font-mono text-primary">irm https://get.mcp.com.ai/hapi.ps1 | iex</code>
+              <code className="font-mono text-primary">$s = irm https://get.mcp.com.ai/hapi.ps1; &amp; ([scriptblock]::Create($s)) --version v1</code>
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0"
                       onClick={handleCopy('windows')}>
                       {copied ? (
